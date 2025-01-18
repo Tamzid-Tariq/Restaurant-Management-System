@@ -1,0 +1,138 @@
+/* .loginPage {
+    background: url('Images/HomePage.avif');
+    background: linear-gradient(rgba(11, 11, 11, 0.5), rgba(10, 10, 10, 0.5)), url("Images/HomePage.avif");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 120%;
+}
+
+.loginForm {
+    background-color: rgba(1, 32, 93, 0.6);
+    color: white;
+}
+
+.site-title {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.mb-3 {
+    margin-bottom: 1.5rem !important;
+}
+
+.form-control {
+    margin-bottom: 1rem;
+} */
+
+.loginPage {
+    background: linear-gradient(rgba(11, 11, 11, 0.7), rgba(10, 10, 10, 0.7)), url("Images/HomePage.avif");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4rem;
+}
+
+.site-title {
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10rem;
+}
+
+.loginForm {
+    background-color: rgba(1, 32, 93, 0.9);
+    color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login-header {
+    margin-bottom: 1.5rem;
+}
+
+.login-header h2 {
+    color: white;
+    font-size: 2rem;
+    margin: 0;
+    text-align: center;
+}
+
+.form-control {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 4px;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.form-control:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.5);
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border: none;
+    padding: 0.8rem;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.mb-1 {
+    margin-bottom: 1rem;
+}
+
+.text-warning {
+    color: hsl(0, 100%, 51%);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+
+
+input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+.dropdown-menu-dark {
+    background-color: #343a40;
+    border: none;
+}
+
+.dropdown-menu-dark .dropdown-item {
+    color: #fff;
+}
+
+.dropdown-menu-dark .dropdown-item:hover {
+    background-color: #495057;
+}
