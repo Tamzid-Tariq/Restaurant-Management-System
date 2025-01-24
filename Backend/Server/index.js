@@ -8,6 +8,7 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import multer from 'multer'
 import path from 'path'
+import con from './utils/db.js'
 
 const app = express()
 app.use(cors({
@@ -26,12 +27,6 @@ app.listen(3000,() =>{
 app.use(cookieParser());
 app.use(express.static('public'));
 
-const con = mysql2.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "root",
-    database: "project"
-})
 
 con.connect(function(err) {
     if(err) {
