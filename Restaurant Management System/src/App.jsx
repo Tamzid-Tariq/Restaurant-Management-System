@@ -10,7 +10,16 @@ import CustomerDetail from "./Components/CustomerDetail";
 import Home from './Components/Home'
 import ManageStaff from "./Components/ManageStaff";
 import ManageMenu from "./Components/ManageMenu";
+import ManageOrder from "./Components/ManageOrder";
 import ManageBookings from "./Components/ManageBookings";
+import UserDetail from "./Components/UserDetail";
+import StaffDetail from "./Components/StaffDetail";
+import MenuDetail from "./Components/MenuDetail";
+import OrderDetail from "./Components/OrderDetail";
+
+import StaffProfile from "./Components/StaffProfile";
+import MenuProfile from "./Components/MenuProfile";
+import OrderProfile from "./Components/OrderProfile";
 // import Start from './Start'
 // import EmployeeDetail from './EmployeeDetail'
 // import EmployeeLogin from './EmployeeLogin'
@@ -30,10 +39,18 @@ function App() {
           <Route path="/dashboard/ManageCustomers" element={<ManageCustomers />}></Route>
           <Route path="/dashboard/RemoveCustomer" element={<RemoveCustomer />}></Route>
           <Route path="/dashboard/CustomerDetail" element={<CustomerDetail />}></Route>
+          <Route path="/dashboard/StaffDetail" element={<StaffDetail />}></Route>
+          <Route path="/dashboard/MenuDetail" element={<MenuDetail />}></Route>
+          <Route path="/dashboard/OrderDetail" element={<OrderDetail />}></Route>
 
           <Route path="/dashboard/ManageStaff" element={<ManageStaff />}></Route>
           <Route path="/dashboard/ManageMenu" element={<ManageMenu />}></Route>
+          <Route path="/dashboard/ManageOrder" element={<ManageOrder />}></Route>
           <Route path="/dashboard/ManageBookings" element={<ManageBookings />}></Route>
+          <Route path="/dashboard/CustomerDetail/customer/:id" element={<UserDetail />} />
+          <Route path="/dashboard/StaffDetail/staff/:id" element={<StaffProfile />} />
+          <Route path="/dashboard/MenuDetail/menu/:id" element={<MenuProfile />} />
+          <Route path="/dashboard/OrderDetail/order/:id" element={<OrderProfile />} />
         </Route>
 
         <Route path="/login" element={<Login />}></Route>

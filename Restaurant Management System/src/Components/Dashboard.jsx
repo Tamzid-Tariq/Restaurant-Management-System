@@ -36,7 +36,7 @@ const Dashboard = () => {
         <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
           <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
             <a
-              href="/"
+              href="/dashboard"
               className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none"
             >
               <span className="fs-5 fw-bolder d-none d-sm-inline">
@@ -47,16 +47,16 @@ const Dashboard = () => {
               className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
               id="menu"
             >
-              <li>
+              {/* <li>
                 <Link
-                  to="/dashboard"
+                  to="/"
                   data-bs-toggle="collapse"
                   className="nav-link text-white px-0 align-middle"
                 >
                   <i className="fs-4 bi-speedometer2"></i>{" "}
                   <span className="ms-1 d-none d-sm-inline">Dashboard</span>{" "}
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link
                   to="/dashboard/AdminPortal"
@@ -97,20 +97,20 @@ const Dashboard = () => {
                       Add Customer
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link
                       className="dropdown-item"
                       to="/dashboard/RemoveCustomer"
                     >
                       Remove a Customer
                     </Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link
                       className="dropdown-item"
                       to="/dashboard/CustomerDetail"
                     >
-                      Customer Details
+                      Customer Directory
                     </Link>
                   </li>
                   {/* <li>
@@ -154,20 +154,20 @@ const Dashboard = () => {
                       Add Staff
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link
                       className="dropdown-item"
                       to="/dashboard/RemoveStaff"
                     >
                       Remove a Staff
                     </Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link
                       className="dropdown-item"
-                      to="/dashboard/MostVisitedCustomer"
+                      to="/dashboard/StaffDetail"
                     >
-                      Staff Details
+                      Staff Directory
                     </Link>
                   </li>
                   {/* <li>
@@ -180,15 +180,91 @@ const Dashboard = () => {
                   </li> */}
                 </ul>
               </li>
-              <li>
-                <Link
-                  to="/dashboard/ManageMenu"
-                  className="nav-link px-0 align-middle text-white"
+
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle text-white px-0 align-middle"
+                  href="#"
+                  id="manageCustomersDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
                 >
                   <i className="fs-4 bi-people"></i>{" "}
-                  <span className="ms-1 d-none d-sm-inline">Manage Menu</span>{" "}
-                </Link>
+                  <span className="ms-1 d-none d-sm-inline">
+                    Manage Menu
+                  </span>
+                </a>
+                <ul
+                  className="dropdown-menu dropdown-menu-dark"
+                  aria-labelledby="manageCustomersDropdown"
+                >
+                  <li>
+                    <Link
+                      className="dropdown-item"
+                      to="/dashboard/ManageMenu"
+                    >
+                      Add Menu
+                    </Link>
+                  </li>
+                  
+                  <li>
+                    <Link
+                      className="dropdown-item"
+                      to="/dashboard/MenuDetail"
+                    >
+                      Menu Directory
+                    </Link>
+                  </li>
+                  {/* <li>
+                    <Link
+                      className="dropdown-item"
+                      to="/dashboard/MostSpendedCustomer"
+                    >
+                      Most Spended Customer
+                    </Link>
+                  </li> */}
+                </ul>
               </li>
+              
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle text-white px-0 align-middle"
+                  href="#"
+                  id="manageCustomersDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i className="fs-4 bi-people"></i>{" "}
+                  <span className="ms-1 d-none d-sm-inline">
+                    Manage Orders
+                  </span>
+                </a>
+                <ul
+                  className="dropdown-menu dropdown-menu-dark"
+                  aria-labelledby="manageCustomersDropdown"
+                >
+                  <li>
+                    <Link
+                      className="dropdown-item"
+                      to="/dashboard/ManageOrder"
+                    >
+                      Add a New Order
+                    </Link>
+                  </li>
+                  
+                  <li>
+                    <Link
+                      className="dropdown-item"
+                      to="/dashboard/OrderDetail"
+                    >
+                      Orders Directory
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+
               <li>
                 <Link
                   to="/dashboard/ManageBookings"
