@@ -1,15 +1,19 @@
 import express from "express";
 import cors from "cors";
 import { adminRouter } from "./Routes/AdminRoute.js";
-
+// import { customerRouter } from "./Routes/CustomerRoute.js";
 import mysql2 from "mysql2";
 import cookieParser from "cookie-parser";
+import bodyParser from 'body-parser';
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import multer from "multer";
 import path from "path";
 
+import con from "./utils/db.js";
+
 import { fileURLToPath } from "url";
+import { stringify } from "querystring";
 
 // Convert `import.meta.url` to a file path
 const __filename = fileURLToPath(import.meta.url);
@@ -45,12 +49,6 @@ app.use((err, req, res, next) => {
     });
 });
 
-const con = mysql2.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "root",
-  database: "project",
-});
 
 con.connect(function (err) {
   if (err) {
@@ -95,6 +93,7 @@ const upload = multer({
     }
   },
 });
+
 app.use((err, req, res, next) => {
   if (err instanceof multer.MulterError) {
     return res.status(400).json({ Error: `Multer error: ${err.message}` });
@@ -131,6 +130,29 @@ app.use((err, req, res, next) => {
 //     });
 //   });
 // });
+
+app.post("/customerlogin", (req, res) => {
+  const sql = "SELECT * from customer Where email = ? and password = ?";
+  con.query(sql, [req.body.email, req.body.password], (err, result) => {
+    if (err) return res.json({ loginStatus: false, Error: "Query error" });
+    if (result.length > 0) {
+      const email = result[0].email;
+      const token = jwt.sign(
+        { role: "customer", email: email, id: result[0].CustomerID },
+        "nndn",
+        { expiresIn: "1d" }
+      );
+      res.cookie('token', token);
+      res.cookie('id', String(result[0].CustomerID));
+      return res.json({ loginStatus: true });
+    } else {
+      return res.json({ loginStatus: false, Error: "Wrong Email or Password" });
+    }
+  });
+});
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/addcustomer', upload.single('image'), (req, res) => {
   if (!req.file) {

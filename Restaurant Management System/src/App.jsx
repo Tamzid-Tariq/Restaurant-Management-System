@@ -4,9 +4,12 @@ import Login from "./Components/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./Components/Dashboard";
 import AdminPortal from "./Components/AdminPortal";
+import CustomerLogin from "./Components/CustomerLogin";
 import ManageCustomers from "./Components/ManageCustomers";
 import RemoveCustomer from "./Components/RemoveCustomer";
 import CustomerDetail from "./Components/CustomerDetail";
+import CustomerDashboard from "./Components/CustomerDashboard";
+import CustomerProfile from "./Components/CustomerProfile";
 import Home from './Components/Home'
 import ManageStaff from "./Components/ManageStaff";
 import ManageMenu from "./Components/ManageMenu";
@@ -30,11 +33,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+      
+        <Route path="/" element={<Home />} ></Route>
+        <Route path="/customerlogin" element={<CustomerLogin />}></Route>
+        <Route path="/customerdash" element={<CustomerDashboard />}>
+          <Route path="/customerdash/user-profile" element={<CustomerProfile />}></Route>
+          </Route>
         <Route path="/adminlogin" element={<Login />}></Route>
         <Route path="/dashboard" element={<Dashboard />}>
-        {/* </Route>
-        <Route> */}
-          <Route path='' element={<Home />}></Route>
           <Route path="/dashboard/AdminPortal" element={<AdminPortal />}></Route>
           <Route path="/dashboard/ManageCustomers" element={<ManageCustomers />}></Route>
           <Route path="/dashboard/RemoveCustomer" element={<RemoveCustomer />}></Route>

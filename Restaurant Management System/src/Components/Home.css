@@ -1,0 +1,17 @@
+.header {
+  position: relative;
+  height: 60px;
+}
+
+.header .button-container {
+  position: absolute;
+  top: 20px;
+}
+
+.header .button-container:nth-child(1) {
+  right: 20px;
+}
+
+.header .button-container:nth-child(2) {
+  right: 180px; /* Adjusted to increase the spacing */
+}
