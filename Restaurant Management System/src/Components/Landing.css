@@ -1,0 +1,215 @@
+/* Landing.css */
+.landing-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1c23 0%, #2a2d3a 100%);
+    color: white;
+  }
+  
+  /* Navigation */
+  .landing-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .nav-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .nav-button {
+    background: #4a90e2;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-button:hover {
+    background: #357abd;
+    transform: translateY(-2px);
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 5%;
+    background: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200') center/cover;
+    position: relative;
+  }
+  
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+  }
+  
+  .hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  
+  .hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #a8b3cf;
+  }
+  
+  .cta-button {
+    background: #4a90e2;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background: #357abd;
+    transform: translateY(-2px);
+  }
+  
+  /* Features Section */
+  .features-section {
+    padding: 5rem 5%;
+    text-align: center;
+  }
+  
+  .features-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .feature-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.15);
+  }
+  
+  .feature-card i {
+    font-size: 2.5rem;
+    color: #4a90e2;
+    margin-bottom: 1rem;
+  }
+  
+  .feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .feature-card p {
+    color: #a8b3cf;
+  }
+  
+  /* Benefits Section */
+  .benefits-section {
+    padding: 5rem 5%;
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .benefits-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .benefits-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .benefits-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .benefits-list li {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .benefits-list i {
+    color: #4a90e2;
+  }
+  
+  /* Footer */
+  .landing-footer {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2rem 5%;
+    text-align: center;
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 2.5rem;
+    }
+  
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .benefits-section {
+      padding: 3rem 5%;
+    }
+  }
