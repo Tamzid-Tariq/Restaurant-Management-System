@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import Cookies from "js-cookie";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const CustomerProfile = () => {
   const { state: user } = useLocation();
@@ -7,33 +8,37 @@ const CustomerProfile = () => {
   const [updatedUser, setUpdatedUser] = useState(user);
   const navigate = useNavigate();
   const [User, setUser] = useState(null);
-  const { id } = useParams();
   const [newImage, setNewImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
+        const customerId = Cookies.get("id");
+        if (!customerId) {
+          throw new Error("Customer ID not found in cookies");
+        }
+
         const response = await fetch(
-          `http://localhost:3000/api/customers/${id}`
+          `http://localhost:3000/customers/${customerId}`
         );
         if (!response.ok) {
           throw new Error("Customer not found");
         }
         const data = await response.json();
         setUser(data);
+        setUpdatedUser(data);
       } catch (error) {
         console.error("Error fetching user:", error);
       }
     };
 
-    if (id) {
-      fetchUser();
-    }
-  }, [id]);
+    fetchUser();
+  }, []);
 
   const handleDelete = () => {
-    fetch(`http://localhost:3000/deleteCustomer/${user.CustomerID}`, {
+    const customerId = Cookies.get("id");
+    fetch(`http://localhost:3000/customers/${customerId}`, {
       method: "DELETE",
     })
       .then((response) => response.json())
@@ -60,10 +65,10 @@ const CustomerProfile = () => {
     }
   };
 
-
   const handleUpdate = async () => {
     try {
-      if (!user || !user.CustomerID) {
+      const customerId = Cookies.get("id");
+      if (!customerId) {
         throw new Error("Customer ID is missing");
       }
 
@@ -78,7 +83,7 @@ const CustomerProfile = () => {
       }
 
       const response = await fetch(
-        `http://localhost:3000/api/customers/${user.CustomerID}`,
+        `http://localhost:3000/customers/${customerId}`,
         {
           method: "PUT",
           body: formData, // Remove Content-Type header to let browser set it
@@ -155,7 +160,6 @@ const CustomerProfile = () => {
                   Customer Details
                 </h2>
 
-            
                 <div className="text-center mb-5">
                   <div
                     style={{
@@ -173,7 +177,7 @@ const CustomerProfile = () => {
                       justifyContent: "center",
                     }}
                   >
-                    {imagePreview || user.Image ? (
+                    {imagePreview || (user && user.Image) ? (
                       <img
                         src={
                           imagePreview ||
@@ -239,7 +243,7 @@ const CustomerProfile = () => {
                           <input
                             type="text"
                             name={field}
-                            value={updatedUser[field]}
+                            value={updatedUser ? updatedUser[field] : ""}
                             onChange={handleInputChange}
                             className="form-control"
                           />
@@ -253,7 +257,7 @@ const CustomerProfile = () => {
                               color: "#fff",
                             }}
                           >
-                            {user[field]}
+                            {User && User[field]}
                           </div>
                         )}
                       </div>
@@ -277,7 +281,7 @@ const CustomerProfile = () => {
                         marginRight: "20px",
                       }}
                     >
-                      Delete Customer
+                      Delete Profile
                     </button>
 
                     <button
@@ -313,35 +317,6 @@ const CustomerProfile = () => {
                     Update Customer
                   </button>
                 )}
-                {/* {isEditing && (
-                  <div className="form-group">
-                    <label className="text-light mb-2">Profile Picture</label>
-                    <input
-                      type="file"
-                      onChange={handleImageChange}
-                      accept="image/*"
-                      className="form-control"
-                      style={{
-                        background: "rgba(255, 255, 255, 0.1)",
-                        border: "1px solid rgba(255, 255, 255, 0.2)",
-                        borderRadius: "10px",
-                        color: "#fff",
-                        padding: "12px",
-                      }}
-                    />
-                    {imagePreview && (
-                      <img
-                        src={imagePreview}
-                        alt="Preview"
-                        style={{
-                          maxWidth: "200px",
-                          marginTop: "10px",
-                          borderRadius: "10px",
-                        }}
-                      />
-                    )}
-                  </div>
-                )} */}
               </div>
             </div>
           </div>

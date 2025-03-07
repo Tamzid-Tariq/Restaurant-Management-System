@@ -10,6 +10,8 @@ import RemoveCustomer from "./Components/RemoveCustomer";
 import CustomerDetail from "./Components/CustomerDetail";
 import CustomerDashboard from "./Components/CustomerDashboard";
 import CustomerProfile from "./Components/CustomerProfile";
+import CustomerOrder from "./Components/CustomerOrder";
+import CustomerBooking from "./Components/CustomerBooking";
 import Home from './Components/Home'
 import ManageStaff from "./Components/ManageStaff";
 import ManageMenu from "./Components/ManageMenu";
@@ -38,6 +40,8 @@ function App() {
         <Route path="/customerlogin" element={<CustomerLogin />}></Route>
         <Route path="/customerdash" element={<CustomerDashboard />}>
           <Route path="/customerdash/user-profile" element={<CustomerProfile />}></Route>
+          <Route path="/customerdash/create-order" element={<CustomerOrder />}></Route>
+          <Route path="/customerdash/book-table" element={<CustomerBooking />}></Route>
           </Route>
         <Route path="/adminlogin" element={<Login />}></Route>
         <Route path="/dashboard" element={<Dashboard />}>

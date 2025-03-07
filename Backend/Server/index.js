@@ -340,6 +340,22 @@ app.get("/customers", (req, res) => {
   });
 });
 
+app.get("/customers/:id", (req, res) => {
+  const customerId = req.params.id;
+  const sql = "SELECT * FROM customer WHERE CustomerID = ?";
+
+  con.query(sql, [customerId], (err, result) => {
+    if (err) {
+      console.error("SQL query error:", err);
+      return res.status(500).json({ Error: "Database error" });
+    }
+    if (result.length === 0) {
+      return res.status(404).json({ Error: "Customer not found" });
+    }
+    res.json(result[0]);
+  });
+});
+
 app.get("/staff", (req, res) => {
   // const sql = "SELECT CustomerID, Name, Email, ContactNumber FROM customer";
   const sql = "SELECT * from staff";

@@ -135,7 +135,7 @@ const UserDetail = () => {
     const fetchUser = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/api/customers/${id}`
+          `http://localhost:3000/customers/${id}`
         );
         if (!response.ok) {
           throw new Error("Customer not found");
