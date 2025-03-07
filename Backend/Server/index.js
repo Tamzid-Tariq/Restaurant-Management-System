@@ -911,3 +911,29 @@ app.post("/api/reservation", (req, res) => {
     });
   });
 });
+
+app.post("/reservation", (req, res) => {
+  const { CustomerID, ReservationDate, ReservationTime, Status } = req.body;
+
+  const sql = `
+    INSERT INTO reservation (CustomerID, ReservationDate, ReservationTime, Status)
+    VALUES (?, ?, ?, ?)`;
+
+  const params = [CustomerID, ReservationDate, ReservationTime, Status];
+
+  con.query(sql, params, (err, result) => {
+    if (err) {
+      console.error("Error inserting reservation:", err);
+      return res.status(500).json({
+        Status: "Error",
+        Message: "Failed to add reservation",
+      });
+    }
+
+    res.status(201).json({
+      Status: "Success",
+      Message: "Reservation added successfully",
+      ReservationID: result.insertId,
+    });
+  });
+});

@@ -6,6 +6,7 @@ const CustomerBooking = () => {
     CustomerID: Cookies.get("id") || "",
     ReservationDate: "",
     ReservationTime: "",
+    Status: "Pending",
   });
 
   const [loading, setLoading] = useState(false);
@@ -18,7 +19,7 @@ const CustomerBooking = () => {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:3000/api/reservation", {
+      const response = await fetch("http://localhost:3000/reservation", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,6 +35,7 @@ const CustomerBooking = () => {
           CustomerID: Cookies.get("id") || "",
           ReservationDate: "",
           ReservationTime: "",
+          Status: "Pending",
         });
       } else {
         setError(result.Message || "Failed to add reservation");
